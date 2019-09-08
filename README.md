@@ -1,4 +1,4 @@
-# AccDNN (Accelerator Core Compiler for Deep Neural Network)
+## AccDNN (Accelerator Core Compiler for Deep Neural Network)
 
 #### Accelerate deep neural network in FPGA without programming
 
