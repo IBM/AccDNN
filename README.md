@@ -190,4 +190,4 @@ Besides the cifar10 demo, we also provide the ZF, VGG16, YOLO models in the 'exa
 
 ### Contact:
 
-Jun Song Wang, Chao Zhu, IBM Research China, {junsongw, bjzhuc}@cn.ibm.com
+Jun Song Wang, IBM Research China, junsongw@cn.ibm.com

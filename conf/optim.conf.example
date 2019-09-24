@@ -1,0 +1,40 @@
+[conv1]
+CPF = 4
+KPF = 8
+DMA_DELAY = 0
+
+[pool1]
+KPF = 16
+
+[conv2]
+CPF = 8
+KPF = 8
+DMA_DELAY = 1
+
+[pool2]
+KPF = 8
+
+[conv3]
+CPF = 8
+KPF = 4
+DMA_DELAY = 2
+
+[pool3]
+KPF = 32
+
+[ip1]
+CPF = 4
+KPF = 4
+DMA_DELAY = 2
+
+[ip2]
+CPF = 4
+KPF = 1
+DMA_DELAY = 2
+
+[prob]
+CPF = 1
+KPF = 1
+
+
+

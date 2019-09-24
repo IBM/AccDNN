@@ -1,0 +1,256 @@
+name: "ZFNet"
+input: "data"
+input_shape {
+  dim: 1
+  dim: 3
+  dim: 224
+  dim: 224
+}
+layer {
+  name: "conv1"
+  type: "ConvolutionRistretto"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 96
+    pad: 1
+    kernel_size: 7
+    stride: 2
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 8
+    fl_layer_out: 5
+    fl_params: 7
+  }
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "conv1"
+  top: "conv1"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "conv2"
+  type: "ConvolutionRistretto"
+  bottom: "pool1"
+  top: "conv2"
+  convolution_param {
+    num_output: 256
+    pad: 0
+    kernel_size: 5
+    stride: 2
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 5
+    fl_layer_out: 4
+    fl_params: 8
+  }
+}
+layer {
+  name: "relu2"
+  type: "ReLU"
+  bottom: "conv2"
+  top: "conv2"
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad: 0
+  }
+}
+layer {
+  name: "conv3"
+  type: "ConvolutionRistretto"
+  bottom: "pool2"
+  top: "conv3"
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 4
+    fl_layer_out: 4
+    fl_params: 7
+  }
+}
+layer {
+  name: "relu3"
+  type: "ReLU"
+  bottom: "conv3"
+  top: "conv3"
+}
+layer {
+  name: "conv4"
+  type: "ConvolutionRistretto"
+  bottom: "conv3"
+  top: "conv4"
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 4
+    fl_layer_out: 6
+    fl_params: 8
+  }
+}
+layer {
+  name: "relu4"
+  type: "ReLU"
+  bottom: "conv4"
+  top: "conv4"
+}
+layer {
+  name: "conv5"
+  type: "ConvolutionRistretto"
+  bottom: "conv4"
+  top: "conv5"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 6
+    fl_layer_out: 7
+    fl_params: 9
+  }
+}
+layer {
+  name: "relu5"
+  type: "ReLU"
+  bottom: "conv5"
+  top: "conv5"
+}
+layer {
+  name: "pool5"
+  type: "Pooling"
+  bottom: "conv5"
+  top: "pool5"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "fc6"
+  type: "FcRistretto"
+  bottom: "pool5"
+  top: "fc6"
+  inner_product_param {
+    num_output: 4096
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 7
+    fl_layer_out: 7
+    fl_params: 11
+  }
+}
+layer {
+  name: "relu6"
+  type: "ReLU"
+  bottom: "fc6"
+  top: "fc6"
+}
+layer {
+  name: "drop6"
+  type: "Dropout"
+  bottom: "fc6"
+  top: "fc6"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7"
+  type: "FcRistretto"
+  bottom: "fc6"
+  top: "fc7"
+  inner_product_param {
+    num_output: 4096
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 7
+    fl_layer_out: 9
+    fl_params: 11
+  }
+}
+layer {
+  name: "relu7"
+  type: "ReLU"
+  bottom: "fc7"
+  top: "fc7"
+}
+layer {
+  name: "drop7"
+  type: "Dropout"
+  bottom: "fc7"
+  top: "fc7"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc8"
+  type: "FcRistretto"
+  bottom: "fc7"
+  top: "fc8"
+  inner_product_param {
+    num_output: 1000
+  }
+  quantization_param {
+    bw_layer_in: 16
+    bw_layer_out: 16
+    bw_params: 8
+    fl_layer_in: 9
+    fl_layer_out: 9
+    fl_params: 10
+  }
+}
+layer {
+  name: "prob"
+  type: "Softmax"
+  bottom: "fc8"
+  top: "prob"
+}
