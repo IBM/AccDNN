@@ -4,7 +4,7 @@
 
 ### Project Description:
 
-In this project, we proposed a novel solution that can automatically convert the Caffe trained deep neural network to the FPGA RTL level implementation without involving any programming effort, and also provide uniform APIs to the users for their recognition task. Thus the developers, without any FPGA programming experience, can deploy their FPGA accelerated deep learning service in the data center only providing their trained Caffe model.   
+In this project, we proposed a novel solution that can automatically convert the Caffe trained deep neural network to the FPGA RTL level implementation without involving any programming effort, and also provide uniform APIs to the users for their recognition task. Thus the developers, without any FPGA programming experience, can deploy their FPGA accelerated deep learning service in the data center only providing their trained Caffe model. This work was published in ICCAD'18, and won the Best Paper Award for Front-end. For more design details. please refer to our [paper](https://docs.wixstatic.com/ugd/c50250_77e06b7f02b44eacb76c05e8fbe01e08.pdf).
 
 ### The conversion consists of three stages, 
 1. Caffe net file is firstly parsed to obtain the net structure. We estimate the workload of each layer to determine the parallelism level under the constraints of FPFA resource. 
@@ -28,51 +28,18 @@ In this project, we proposed a novel solution that can automatically convert the
     export PYTHONPATH=path/to/caffe/python
     export ACCDNN_ROOT=path/to/AccDNN
 ```
-2. Clone the Power-AI-Engine repository, and add the Power-AI-Engine SDK to environment.
+2. Clone the Power-AI-Engine repository, and add the Power-AI-Engine SDK to environment. (**optional for IBM POWER FPGA Acceleration**)
 ```
-    git clone https://github.ibm.com/supervessel/Power-AI-Engine.git
     export FPGA_SDK_PATH=path/to/Power-AI-Engine/FPGA-SDK
 ```
-3. Install Xilinx Vidado software, and also add to environment, the hardware SDK was tested on Vivado 2016.4.
+3. Install Xilinx Vidado software, and also add to environment, the hardware SDK was tested on Vivado 2017.4.
 ```
     export VIVADO_PATH=path/to/Xilinx/Vivado/201x.x/bin
 ```
 4. Clone the AccDNN repository.
 ```
-    git clone https://github.ibm.com/junsongw/AccDNN.git
+    git clone https://github.com/IBM/AccDNN.git
 ```    
-## Run the demo for cifar10 on AccDNN official supported card.
-
-Please use the command `./bin/pie.sh -l` to get the list of the AccDNN official supported boards.
-
-There are several settings you should aware before you run this demo. All the settings are in the file settings.py
-
-BATCH_SIZE: the same concept in GPU acceleration, which meams how many images will be processed simultaneously. The defaut value is 1, and the maximal value is 32, for more details, please refer to 'beyond the demo' section. You can also set the batch size through the command line.
- 
-WQ: Since AccDNN uses 16 bits fixed ponit to quantize the weights of the neural network, and this value means how many bits are used to represent the fractional part, and 15-WQ is the integral part. The highest bit is the sign bit. The default value is 13.
-
-DQ: this means how many bits are used to represent the fractional part of the neuron (also 16 bits fixed ponit). The default value is 6.
-
-INPUT_CHANNEL_PADDING: The input image usually has 3 channels (RGB), and if padding additional 1 channel (forced to zero) to 4 channels could increase the degree of parallelism in FPGA. The default value is 1, and if the number of input channels has already satidfied 2^N, keep it 0.
-
-#### Script to run the demo
-
-    ./bin/pie.sh -m example/cifar10/cifar10_quick.prototxt \
-                 -w example/cifar10/cifar10_quick_iter_5000.caffemodel \
-                 -b Alphadata_8K5_CAPI \
-                 -o ./output \
-                 -f example/cifar10/optim_cifar10.conf \
-                 -s 1
-
-You could use `./bin/pie.sh -h` to get the parameters definition in the command line.
-
-This AccDNN script will generate three file:
-
-output/Alphadata_8K5_CAPI/AccDNN.bin: FPGA binary file, which could be downloaded to the target FPGA. Use `./bin/pie.sh -l` to get the list of the supported boards.
-
-output/weights.bin, deep neural network weights file, which will be downloaded to the on-board DDR by the software. 
-
-output/pie-run.conf, frequency setting file, which will be used to set the appropriate clock frequency of the accelerator.
 
 ## Run the cifar10 demo to only generate the IP core of the accelerator
 
