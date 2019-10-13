@@ -4,7 +4,7 @@
 
 ### Project Description:
 
-In this project, we proposed a novel solution that can automatically convert the Caffe trained deep neural network to the FPGA RTL level implementation without involving any programming effort, and also provide uniform APIs to the users for their recognition task. Thus the developers, without any FPGA programming experience, can deploy their FPGA accelerated deep learning service in the data center only providing their trained Caffe model. This work was published in ICCAD'18, and won the Best Paper Award for Front-end. For more design details. please refer to our [paper](https://docs.wixstatic.com/ugd/c50250_77e06b7f02b44eacb76c05e8fbe01e08.pdf).
+In this project, we proposed a novel solution that can automatically convert the Caffe trained deep neural network to the FPGA RTL level implementation without involving any programming effort, and also provide uniform APIs to the users for their recognition task. Thus the developers, without any FPGA programming experience, can deploy their FPGA accelerated deep learning service in the data center or edge devices only providing their trained Caffe model. This work was published in ICCAD'18, and won the **Best Paper Award** for Front-end. For more design details. please refer to our [paper](https://docs.wixstatic.com/ugd/c50250_77e06b7f02b44eacb76c05e8fbe01e08.pdf).
 
 ### The conversion consists of three stages, 
 1. Caffe net file is firstly parsed to obtain the net structure. We estimate the workload of each layer to determine the parallelism level under the constraints of FPFA resource. 
