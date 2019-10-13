@@ -1,6 +1,6 @@
 ## AccDNN (Accelerator Core Compiler for Deep Neural Network)
 
-#### Accelerate deep neural network in FPGA without programming
+### This project is also named as DNNBuilder in our academic research.
 
 ### Project Description:
 
@@ -23,7 +23,7 @@ In this project, we proposed a novel solution that can automatically convert the
 
 ## Requirements:
 
-1. Install the [caffe](http://caffe.berkeleyvision.org/) framework following the instructions [here](http://caffe.berkeleyvision.org/installation.html), tested on rc3, and also the Python caffe by runing the `Make pycaffe` and `pip install -r requirements.txt` in caffe/python. Make sure that you have compiled the Python Caffe interface and that it is on your `PYTHONPATH`. If you use the quantized caffe model, please install [ristretto Caffe](https://github.com/pmgysel/caffe) instead of BVLC caffe. Please also set the ACCDNN_ROOT.
+1. To make sure you can use the quantized caffe model, please install [ristretto Caffe](https://github.com/pmgysel/caffe) instead of BVLC caffe following the instructions [here](http://caffe.berkeleyvision.org/installation.html), tested on rc3, and also the Python caffe by runing the `Make pycaffe` and `pip install -r requirements.txt` in caffe/python. Make sure that you have compiled the Python Caffe interface and that it is on your `PYTHONPATH`. Please also set the ACCDNN_ROOT.
 ```
     export PYTHONPATH=path/to/caffe/python
     export ACCDNN_ROOT=path/to/AccDNN
@@ -158,4 +158,18 @@ Besides the cifar10 demo, we also provide the ZF, VGG16, YOLO models in the 'exa
 ### Contact:
 
 Jun Song Wang, IBM Research China, junsongw@cn.ibm.com
-update
+
+Xiaofan Zhang, University of Illinois at Urbana-Champaign, xiaofan2@illinois.edu 
+
+### Citation
+
+If you find *AccDNN/DNNBuilder* useful in your research, please consider to cite our paper:
+
+```
+@inproceedings{DNNBuilder,
+  title={DNNBuilder: an Automated Tool for Building High-Performance DNN Hardware Accelerators for FPGAs},
+  author={Xiaofan Zhang, Junsong Wang, Chao Zhu, Yonghua Lin, Jinjun Xiong, Wen-mei Hwu, Deming Chen},
+  booktitle={Proceedings of IEEE/ACM International Conference on Computer-Aided Design},
+  year={2018}
+}
+```
