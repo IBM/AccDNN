@@ -33,37 +33,6 @@ add wave -noupdate -format Literal /model_tb/u0_module/input_blob_din
 add wave -noupdate -format Logic /model_tb/u0_module/input_blob_din_en
 add wave -noupdate -format Logic /model_tb/u0_module/input_blob_din_rdy
 
-############################################################################################################################
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/op_din_en
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/op_din_eop
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/op_weight
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/op_data_0
-
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_din_en
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_din_eop
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_din
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_weight
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_bias
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_bias_d1
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_din_en_d1
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_din_eop_d2
-
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/gen_adder_8b/a2_tmp_0
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/gen_adder_8b/a2_tmp_1
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/gen_adder_8b/a2_tmp_reg
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/gen_adder_8b/a2_tmp_sel
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/bias_tmp
-
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_dout_tmp
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/gen_out_8bits/op_dout_reg
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/u_vector_muladd_0_0/op_dout
-
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/blob_dout_rdy
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/blob_dout_en
-add wave -noupdate -format Literal /model_tb/u0_module/u0_conv2_layer/blob_dout
-add wave -noupdate -format Logic /model_tb/u0_module/u0_conv2_layer/blob_dout_eop
-#############################################################################################################################
-
 add wave -noupdate -format Logic /model_tb/u0_module/clk
 add wave -noupdate -format Logic /model_tb/u0_module/rst
 
