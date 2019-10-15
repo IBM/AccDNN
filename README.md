@@ -159,7 +159,7 @@ Besides the cifar10 demo, we also provide the ZF, VGG16, YOLO models in the 'exa
 
 Jun Song Wang, IBM Research China, junsongw@cn.ibm.com
 
-Xiaofan Zhang, University of Illinois at Urbana-Champaign, xiaofan2@illinois.edu 
+Xiaofan Zhang, University of Illinois at Urbana-Champaign, xiaofan3@illinois.edu 
 
 ### Citation
 
