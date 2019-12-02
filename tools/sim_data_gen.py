@@ -51,7 +51,7 @@ def sim_data_gen(model_file, pretrained_model, imagepath, batch_size, iteration)
             data_align = CAPI_DATA_BUS_WIDTH / model_inst.modules[0].input_dw
             if len(blob_data_shaped) % data_align:
                 blob_data_shaped = np.append(blob_data_shaped, \
-                    np.zeros(weights_align - len(blob_data_shaped) % data_align, dtype=float))
+                    np.zeros(data_align - len(blob_data_shaped) % data_align, dtype=float))
 
             blob_data_shaped_uint16 = mat2uint16(blob_data_shaped, model_inst.modules[0].input_dw,  model_inst.modules[0].input_dq)
             blob_data_shaped_uint16_iteration = np.array([])
